@@ -20,9 +20,9 @@ header{
     border: 1px solid black;
     flex-direction: column;
 }
-.linearInput{
+.input{
     margin: 10px;
 }
-#answer{
+#answer1{
     text-align: center;
 }
