@@ -1,7 +1,7 @@
 {
   "name": "amo",
   "version": "2.1.0",
-  "main": "index.html",
+  "main": "docs/index.html",
   "description": "AMO",
   "repository": "https://github.com/bochka123/amo",
   "author": "Oleksndr Tkach <sasha2003tkach001100@gmail.com>",
