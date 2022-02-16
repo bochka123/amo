@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+header{
+    text-align: center;
+}
+#main{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#main > div{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    flex-direction: column;
+}
+.linearInput{
+    margin: 10px;
+}
+#answer{
+    text-align: center;
+}
