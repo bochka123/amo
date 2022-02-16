@@ -5,7 +5,6 @@ $(document).ready(()=>{
         let c = Math.round($("#linearInput3").val())
         if(parseInt(a)&&parseInt(b)&&parseInt(c)){
             let Y1 = (Math.sqrt(a+b)/(c+2*b)) + (Math.sin(a)/Math.sqrt(a**2-b**2))
-            Y1 = Math.round(Y1*100)/100
             if(!isNaN(Y1)){
                 if(isFinite(Y1)) {
                     $("#answer1").html(`Відповідь: ${Y1}`)
