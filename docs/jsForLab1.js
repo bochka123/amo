@@ -1,8 +1,8 @@
 $(document).ready(()=>{
     $("#linearButton").click(()=>{
-        let a = Math.round($("#linearInput1").val())
-        let b = Math.round($("#linearInput2").val())
-        let c = Math.round($("#linearInput3").val())
+        let a = Math.round($("#input1").val())
+        let b = Math.round($("#input2").val())
+        let c = Math.round($("#input3").val())
         if(parseInt(a)&&parseInt(b)&&parseInt(c)){
             let Y1 = (Math.sqrt(a+b)/(c+2*b)) + (Math.sin(a)/Math.sqrt(a**2-b**2))
             if(!isNaN(Y1)){
@@ -18,13 +18,13 @@ $(document).ready(()=>{
         }else{
             $("#answer1").html("Ви ввели не число(")
         }
-        $("#linearInput1").val("")
-        $("#linearInput2").val("")
-        $("#linearInput3").val("")
+        $("#input1").val("")
+        $("#input2").val("")
+        $("#input3").val("")
     })
     $("#ramifiedButton").click(()=>{
-        let n = Math.round($("#ramifiedInput1").val())
-        let r = Math.round($("#ramifiedInput2").val())
+        let n = Math.round($("#input4").val())
+        let r = Math.round($("#input5").val())
         if(parseInt(r)&&parseInt(n)) {
             if(n >= 0 && r >= 0 && n-r>0) {
                 let condition = factorial(n) / factorial(r) * factorial(n - r)
@@ -41,8 +41,8 @@ $(document).ready(()=>{
         }else {
             $("#answer2").html("Ви ввели не число(")
         }
-        $("#ramifiedInput1").val("")
-        $("#ramifiedInput2").val("")
+        $("#input4").val("")
+        $("#input5").val("")
     })
     $("#loopButton").click(()=>{
         let sum = 0
@@ -71,5 +71,18 @@ function factorial(num){
             answer *= i
         }
         return answer
+    }
+}
+function fillInputs(input){
+    let file = input.files[0]
+    let reader = new FileReader()
+    reader.readAsText(file)
+    reader.onload = () => {
+        let result = reader.result
+        let result2 = result.split(' ')
+        for (let i = 0; i < result2.length; i++){
+            $(`#input${i+1}`).val(result2[i])
+        }
+        console.log(result2)
     }
 }
