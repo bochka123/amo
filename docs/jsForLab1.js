@@ -76,12 +76,26 @@ function factorial(num){
 function fillInputs(input){
     let file = input.files[0]
     let reader = new FileReader()
+    let check = true
     reader.readAsText(file)
     reader.onload = () => {
         let result = reader.result
         let result2 = result.split(' ')
-        for (let i = 0; i < result2.length; i++){
-            $(`#input${i+1}`).val(result2[i])
+        for (let number of result2){
+            if (isNaN(number)){
+                $("#consequenceForFile").html("Дані у файлі - не числа")
+                check = false
+                break
+            }
+        }
+        if (result2.length !== 5 && check){
+            $("#consequenceForFile").html("У файлі має бути 5 чисел")
+            check = false
+        }
+        if (check) {
+            for (let i = 0; i < result2.length; i++) {
+                $(`#input${i + 1}`).val(result2[i])
+            }
         }
         console.log(result2)
     }

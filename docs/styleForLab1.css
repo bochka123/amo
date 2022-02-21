@@ -24,7 +24,7 @@ header{
     flex-direction: column;
 }
 .input{
-    margin: 10px;
+    margin: 8px;
 }
 #answer1{
     text-align: center;
@@ -45,5 +45,11 @@ a:hover{
 }
 input[type=file]{
     margin: 8px;
+}
+.inputFile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
 
