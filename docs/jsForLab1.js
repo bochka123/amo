@@ -58,6 +58,7 @@ $(document).ready(()=>{
         $("#answer3").html(`Відповідь: ${sum} / ${product} = ${f}`)
     })
 })
+
 function factorial(num){
     if (num < 0) {
         console.error("Variable num can't be negative")
@@ -73,6 +74,7 @@ function factorial(num){
         return answer
     }
 }
+
 function fillInputs(input){
     let file = input.files[0]
     let reader = new FileReader()
