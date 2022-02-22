@@ -52,3 +52,6 @@ input[type=file]{
     text-align: center;
     justify-content: center;
 }
+h1, h3{
+    margin: 8px;
+}

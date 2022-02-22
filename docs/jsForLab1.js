@@ -55,7 +55,7 @@ $(document).ready(()=>{
         }
         let f = sum/product
 
-        $("#answer3").html(`Відповідь: ${sum} / ${product} = ${f}`)
+        $("#answer3").html(`Відповідь: ${f}`)
     })
 })
 
