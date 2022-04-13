@@ -12,6 +12,11 @@ let arr
 let time
 let ourGraph = document.getElementById("ourGraph")
 let ctx = ourGraph.getContext("2d")
+ctx.width = 400
+ctx.height = 400
+ctx.lineWidth = 1
+let X = [10]
+let Y = [390]
 $(document).ready(function (){
     buildGraph()
     //ctx.clearRect(0,0,ctx.width,ctx.height)
@@ -28,6 +33,7 @@ $(document).ready(function (){
         }
     })
     $("#result").click(()=>{
+        ctx.clearRect(0,0,ctx.width,ctx.height)
         array = $("#input").val()
         if(!(array === undefined || array === "")){
             for(let i = 0;i < array.length;i++) {
@@ -46,9 +52,11 @@ $(document).ready(function (){
             return
         }
         arr = shakerSort(arr)
-        buildGraph()
         $("#input").val(arr)
         console.log(arr)
+        console.log(X)
+        console.log(Y)
+        buildGraph()
     })
 
 })
@@ -87,6 +95,8 @@ function shakerSort(array)
         left=optimum
     }
     time = performance.now() - time
+    X.push(array.length/125+10)
+    Y.push(390-time*0.4)
     $("#time").html(`Час виконання: ${time} мілісекунд`)
     return array
 }
@@ -112,9 +122,6 @@ function fillTextArea(input){
     }
 }
 function buildGraph(){
-    ctx.width = 400
-    ctx.height = 400
-    ctx.lineWidth = 1
     ctx.moveTo(0, 30)
     ctx.lineTo(10, 0)
     ctx.lineTo(10, 390)
@@ -143,4 +150,12 @@ function buildGraph(){
         value-=100
     }
     ctx.stroke()
+    for (let i = 0; i < X.length; i++) {
+        ctx.beginPath()
+        ctx.arc(X[i], Y[i], 3, 0, 2 * Math.PI)
+        ctx.closePath()
+        ctx.fill()
+    }
+    // X.sort()
+    // Y.sort().reverse()
 }
