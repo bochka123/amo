@@ -15,8 +15,10 @@ let ctx = ourGraph.getContext("2d")
 ctx.width = 400
 ctx.height = 400
 ctx.lineWidth = 1
-let X = [10]
-let Y = [390]
+let X = []
+let Y = []
+let linesX = []
+let linesY = []
 $(document).ready(function (){
     buildGraph()
     //ctx.clearRect(0,0,ctx.width,ctx.height)
@@ -33,7 +35,6 @@ $(document).ready(function (){
         }
     })
     $("#result").click(()=>{
-        ctx.clearRect(0,0,ctx.width,ctx.height)
         array = $("#input").val()
         if(!(array === undefined || array === "")){
             for(let i = 0;i < array.length;i++) {
@@ -51,15 +52,57 @@ $(document).ready(function (){
             $("#input").val("Ви не ввели массив для сортування(")
             return
         }
+        ctx.clearRect(0,0,ctx.width,ctx.height)
         arr = shakerSort(arr)
         $("#input").val(arr)
         console.log(arr)
         console.log(X)
         console.log(Y)
+        linesX = X
+        linesY = Y
+        linesX = justShakerSort(linesX)
+        linesY = justShakerSort(linesY).reverse()
+        console.log(`Sorted ${linesX}`);
+        console.log(`Sorted ${linesY}`);
         buildGraph()
     })
 
 })
+function justShakerSort(array)
+{
+    let count = 0
+    let left = 0
+    let right = array.length-1
+    let optimum = 0
+    while(left < right)
+    {
+        for(let i = left; i < right; i++)
+        {
+            count++
+            if(array[i] > array[i+1])
+            {
+                let tmp = array[i]
+                array[i] = array[i+1]
+                array[i+1]=tmp
+                optimum = i
+            }
+        }
+        right=optimum
+        for(let i = right; i > left; i--)
+        {
+            count++
+            if(array[i-1] > array[i])
+            {
+                let tmp = array[i]
+                array[i] = array[i-1]
+                array[i-1]=tmp
+                optimum = i
+            }
+        }
+        left=optimum
+    }
+    return array
+}
 function shakerSort(array)
 {
     time = performance.now()
@@ -156,6 +199,9 @@ function buildGraph(){
         ctx.closePath()
         ctx.fill()
     }
-    // X.sort()
-    // Y.sort().reverse()
+    ctx.moveTo(10,390)
+    for (let i = 0; i < linesX.length; i++){
+        ctx.lineTo(linesX[i],linesY[i])
+    }
+    ctx.stroke()
 }
