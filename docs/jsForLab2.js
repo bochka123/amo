@@ -8,30 +8,53 @@
 // console.log('fass')
 // time = performance.now() - time;
 // console.log('Время выполнения = ', time);
+let arr
+let time
+let ourGraph = document.getElementById("ourGraph")
+let ctx = ourGraph.getContext("2d")
 $(document).ready(function (){
-    let graph_x2 = document.getElementById("graph_x^2")
-    let ctx1 = graph_x2.getContext("2d")
-    ctx1.width = 100
-    ctx1.height = 100
-    ctx1.moveTo(134.75, 0)
-    ctx1.lineTo(134.75, 269.5)
-    ctx1.lineTo(269.5, 100)
-    ctx1.stroke()
-    let arr
+    buildGraph()
+    //ctx.clearRect(0,0,ctx.width,ctx.height)
+    $("#clear").click(()=>{
+        $("#input").val("")
+    })
     $("#random").click(()=>{
-        arr = Array(6000).fill(0).map(()=>Math.random())
-        $("#input").val(arr)
+        let arrayLength = Number($("#arrayLength").val())
+        if(!parseInt(arrayLength)){
+            $("#arrayLength").val("Ви не ввели число(")
+        }else {
+            arr = Array(arrayLength).fill(0).map(() => Math.round(Math.random() * 1000000))
+            $("#input").val(arr)
+        }
     })
     $("#result").click(()=>{
+        array = $("#input").val()
+        if(!(array === undefined || array === "")){
+            for(let i = 0;i < array.length;i++) {
+                if (!(isFinite(array[i]) || array[i] === ",")) {
+                    $("#input").val("Ви ввели массив для сортування не правильно(")
+                    return
+                }
+            }
+            arr = array.split(',')
+            if(arr.length > 50000){
+                $("#input").val("Максимальна кількість елементів - 50000(")
+                return
+            }
+        }else{
+            $("#input").val("Ви не ввели массив для сортування(")
+            return
+        }
         arr = shakerSort(arr)
+        buildGraph()
         $("#input").val(arr)
-        console.log(arr);
+        console.log(arr)
     })
 
 })
 function shakerSort(array)
 {
-    let time = performance.now();
+    time = performance.now()
     let count = 0
     let left = 0
     let right = array.length-1
@@ -63,7 +86,61 @@ function shakerSort(array)
         }
         left=optimum
     }
-    time = performance.now() - time;
-    console.log(`Час виконання = ${time}`);
+    time = performance.now() - time
+    $("#time").html(`Час виконання: ${time} мілісекунд`)
     return array
+}
+
+function fillTextArea(input){
+    let file = input.files[0]
+    let reader = new FileReader()
+    reader.readAsText(file)
+    reader.onload = () => {
+        let result = reader.result
+        if(!(result === undefined || result === "")){
+            for(let i = 0;i < result.length;i++) {
+                if (!(isFinite(result[i]) || result[i] === ",")) {
+                    $("#input").val("Данні у файлі введено не правильно(")
+                    return
+                }
+            }
+            arr = result.split(',')
+            $("#input").val(arr)
+        }else{
+            $("#input").val("Файл пустий(")
+        }
+    }
+}
+function buildGraph(){
+    ctx.width = 400
+    ctx.height = 400
+    ctx.lineWidth = 1
+    ctx.moveTo(0, 30)
+    ctx.lineTo(10, 0)
+    ctx.lineTo(10, 390)
+    ctx.lineTo(400, 390)
+    ctx.lineTo(370, 400)
+    ctx.moveTo(10, 0)
+    ctx.lineTo(20, 30)
+    ctx.moveTo(400, 390)
+    ctx.lineTo(370, 380)
+    ctx.font = "20px serief"
+    ctx.fillText("n", 380, 380)
+    ctx.fillText("v", 20, 10)
+    ctx.fillText("0", 0, 400)
+    let value = 5
+    for (let i = 40; i < 400; i+=40) {
+        ctx.moveTo(i, 387.5)
+        ctx.lineTo(i, 392.5)
+        ctx.fillText(`${value}`, i-5, 385)
+        value+=5
+    }
+    value = 900
+    for (let i = 40; i < 400; i+=40) {
+        ctx.moveTo(7.5, i)
+        ctx.lineTo(12.5, i)
+        ctx.fillText(`${value}`, 20, i)
+        value-=100
+    }
+    ctx.stroke()
 }

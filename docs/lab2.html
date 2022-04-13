@@ -5,7 +5,6 @@
     <title>Lab2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styleForLab2.css">
-    <script src="jsForLab2.js"></script>
 </head>
 <body>
 <div id="back"><a href="index.html">Повернутися на головну</a></div>
@@ -13,15 +12,24 @@
     <h1>Лабораторна робота №2</h1>
     <h3>Виконав студент групи ІО-03 Ткач Олександр.</h3>
     <img src="variantLab2.png" alt="">
-    <div>Ви можете завантажити готові дані із файлу з розширенням .txt, де мають бути записані числа через пробіл</div>
-    <input type="file" onchange="fillInputs(this)" accept=".txt">
-    <textarea id="input" placeholder="Введіть значення масиву для сортування через пробіл"></textarea>
-    <input type="button" value="Згенерувати випадково" id="random">
+    <div>Ви можете завантажити готові дані із файлу з розширенням .txt, де мають бути записані числа через кому</div>
+    <input type="file" onchange="fillTextArea(this)" accept=".txt">
+    <textarea id="input" placeholder="Введіть значення масиву для сортування через кому. Максимум 50000"></textarea>
+    <input type="button" value="Очистити текстове поле" id="clear">
+    <div id="randomDiv">
+        <input id="arrayLength" type="text" placeholder="Введіть кількість елементів">
+        <input type="button" value="Згенерувати випадково" id="random" style="margin-top: 0">
+    </div>
     <input type="button" value="Відсортувати та порахувати час" style="margin-top: 0" id="result">
+    <p style="margin-top: 0" id="time">Час виконання:</p>
 </header>
+
 <div id="canvases">
-    <canvas id="graph_x^2"></canvas>
-    <canvas id="ourGraph"></canvas>
+    <img src="X2.png" id="graphX2" alt="">
+    <canvas id="ourGraph" height="400" width="400"></canvas>
+    <p>Теоретичний графік </p>
+    <p>Практичний графік, де n - кількість елементів масиву помножена на 1000,<br> t - час виконання сортування в мілісекундах</p>
 </div>
+<script src="jsForLab2.js"></script>
 </body>
 </html>
