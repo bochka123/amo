@@ -29,3 +29,8 @@ a:hover{
 h1, h3{
     margin: 8px;
 }
+#graphs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
