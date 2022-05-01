@@ -29,3 +29,20 @@ a:hover{
 h1, h3{
     margin: 8px;
 }
+#main{
+    margin: 10px 10px 5px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+#main > div{
+    display: flex;
+    flex-direction: row;
+}
+p{
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+}
+input[type=submit]{
+    margin: 5px;
+}

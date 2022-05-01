@@ -3,7 +3,7 @@ $(document).ready(()=>{
         let a = Math.round($("#input1").val())
         let b = Math.round($("#input2").val())
         let c = Math.round($("#input3").val())
-        if(parseInt(a)&&parseInt(b)&&parseInt(c)){
+        if((parseInt(a)&&parseInt(b)&&parseInt(c)) || a == '0' || b == '0' || c == '0' ){
             let Y1 = (Math.sqrt(a+b)/(c+2*b)) + (Math.sin(a)/Math.sqrt(a**2-b**2))
             if(!isNaN(Y1)){
                 if(isFinite(Y1)) {
