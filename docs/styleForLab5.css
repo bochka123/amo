@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-align: center  ;
+    background-color: grey;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    padding: 3% 2%;
+    border: 3px solid black;
+    display: block;
+    margin-top: 8px;
+}
+a:hover{
+    background-color: rgba(0,0,0,0.3);
+}
+h1, h3{
+    margin: 8px;
+}
+#matrix{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin: 10px 0 10px 0;
+    width: 20%;
+}
+#matrix div{
+    font-size: 20px;
+}
+#answer{
+    margin-top: 10px;
+}
+.answer{
+    display: flex;
+}

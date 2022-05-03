@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styleForLab5.css">
+</head>
+<body>
+<div id="back"><a href="index.html">Повернутися на головну</a></div>
+<header>
+    <h1>Лабораторна робота №5</h1>
+    <h3>Виконав студент групи ІО-03 Ткач Олександр.</h3>
+    <img src="variantLab5.png" alt="">
+</header>
+<div id="matrix">
+    <div>⌈3x<sub>1</sub></div><div>3x<sub>2</sub></div><div>x<sub>3</sub></div><div>x<sub>4</sub> ⌉</div><div></div><div>⌈-2⌉</div>
+    <div>| x<sub>1</sub></div><div>-x<sub>2</sub></div><div>4x<sub>3</sub></div><div>-x<sub>4</sub> |</div><div>=</div><div>|-1 |</div>
+    <div>|-2x<sub>1</sub></div><div>-2x<sub>2</sub></div><div>-3x<sub>3</sub></div><div>1x<sub>4</sub>|</div><div>=</div><div>| 9 |</div>
+    <div>⌊ x<sub>1</sub></div><div>5x<sub>2</sub></div><div>-1x<sub>3</sub></div><div>2x<sub>4</sub>⌋</div><div>=</div><div>⌊ 4⌋</div>
+</div>
+<input type="submit" value="Порахувати корені СЛАР">
+<div class="input" id="answer">Відповідь: </div>
+<div class="answer"><div>x<sub>1</sub> = </div><div id="x1"></div></div>
+<div class="answer"><div>x<sub>2</sub> = </div><div id="x2"></div></div>
+<div class="answer"><div>x<sub>3</sub> = </div><div id="x3"></div></div>
+<div class="answer"><div>x<sub>4</sub> = </div><div id="x4"></div></div>
+<script src="jsForLab5.js"></script>
+</body>
+</html>
